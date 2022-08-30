@@ -1,0 +1,34 @@
+﻿using System;
+using Core.Entities.Concrete;
+using Entities.Concrete;
+using Microsoft.EntityFrameworkCore;
+
+namespace DataAccess.Concrete.EntityFramework
+{
+    public class NorthwindContext:DbContext
+    {
+        public NorthwindContext()
+        {
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //optionsBuilder.UseSqlServer(@"Server=mcr.microsoft.com/azure-sql-edge;Database=Northwind;User=SQLServerOnMAC;Password=1208Hamza;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=localhost;Database=master;User=sa;Password=1208Hamza");
+        }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+    }
+}
+
